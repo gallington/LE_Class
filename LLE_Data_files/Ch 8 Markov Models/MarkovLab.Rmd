@@ -1,0 +1,314 @@
+---
+title: "Markov Models Lab"
+author: "gallington"
+date: "3/2/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(raster)
+```
+
+## Intro
+
+In this lab we will explore how to make projections of future landscape composition, based on past landscape change dynamics. You will need all of the files in the MarkovLab folder in the class Shared Drive.
+
+First set your working directory to wherever you have stored your data files:
+```{r cars}
+#setwd("./MarkovLab")  
+```
+
+Let's explore the landscapes first.
+Load the classified imagery
+```{r}
+pnw72<- raster("./images/pnw72.gif")
+pnw84<- raster("./images/pnw84.gif")
+pnw91<- raster("./images/pnw91.gif")
+
+  # creating a table of the class names for future reference in case we forget which class is which:
+class.legend = c("Non-forest", "ClearCut","EarlySeral","MidSeral","Mature","OldGrowth")
+pnw.classes<- as.data.frame(cbind(0:5, class.legend))
+names(pnw.classes)<- c("ClassNum", "ClassName")
+# then view it
+pnw.classes
+```
+And then plot it
+1972
+```{r}
+#landscapetools::show_landscape(pnw72)  # this is how we did it before
+
+plot(pnw72, # but you can also do it this way
+      main = "1972" , col = (terrain.colors(n= 6, rev = TRUE)), legend = FALSE)
+legend("topright", legend = class.legend, fill = rev(terrain.colors(7)))
+
+```
+```{r}
+plot(pnw84, # but you can also do it this way
+      main = "1984" , col = rev(terrain.colors(6)))
+```
+
+```{r}
+plot(pnw91, # but you can also do it this way
+      main = "1991" , col = rev(terrain.colors(6)))
+```
+
+## Modeling transitions over time
+Now we can move on to the modeling work. 
+
+First load the sample data, which has already been generated for you.
+This dataframe lists the observed class of 200 randomly cast points for each year.
+Load the data file and explore it:
+```{r}
+# 200 sample points that have been examined and their classifications confirmed.
+pnw.data <- read.csv("sample200.csv")  
+names(pnw.data)
+dim(pnw.data)
+  # also store the # of rows to it's own variable bc we will need that later
+sample.n <- dim(pnw.data)[[1]] # 1st dimension, nrow, = N   
+
+```
+
+Set initial conditions:
+```{r}
+  # tally for 1972
+t1972 <- table(as.factor(pnw.data$X1972)) 
+  # proportions of each class in 1972
+p1972 <- t1972/sample.n   
+  # creates a vector of the initial proportion of each class
+  # this is the xi that you'll need to multiply by the transition matrix
+inits <- as.vector(p1972)
+```
+
+Also calculate the tallies for 1984 and 1991
+```{r}
+  # tally for 1984
+t1984 <- table(as.factor(pnw.data$X1984))
+  # proportions of each class in 1984
+p1984 <- t1984/sample.n
+  # etc.
+t1991 <- table(as.factor(pnw.data$X1991))
+p1991 <- t1991/sample.n
+```
+
+# look at the data over time ...
+
+```{r}
+years <- c(1972, 1984, 1991)
+pnw.d2 <- rbind(as.vector(p1972), as.vector(p1984), as.vector(p1991))
+pnw.d2 <- data.frame(cbind(years, pnw.d2))
+  # name the columns: Year and class name
+names(pnw.d2) <- c("Year","ClearCut","EarlySeral","MidSeral","Mature","OldGrowth")  #NOT TIDY
+```
+
+
+## Now let's plot the observed data:
+
+```{r pressure, echo=TRUE}
+attach(pnw.d2)
+plot(Year, ClearCut, xlim=c(1970,1995), xlab="Year", ylim=c(0,1), ylab="Proportion", type="b", pch=19, col="brown", lwd=2)
+lines(Year,EarlySeral,type="b",pch=19,col="gold",lwd=2)
+lines(Year,MidSeral,type="b",pch=19,col="light green",lwd=2)
+lines(Year,Mature,type="b",pch=19,col="green",lwd=2)
+lines(Year,OldGrowth,type="b",pch=19,col="dark green",lwd=2)
+legend(x="topright",legend=c("ClearCut","EarlySeral","MidSeral","Mature","OldGrowth"), lwd=2, pch=19, col=c("brown","gold","light green","green","dark green"), bty="n")
+
+```
+
+# Now we'll use that data to generation a transition matrix:
+
+*NOTE:* R generates the matrices with t1 on the rows and t2 on the columns
+```{r}
+# build the transition matrix ...
+t.72.84 <- table(pnw.data$X1972,pnw.data$X1984)
+t.72.84 # look at it: this is the transition tally
+
+# relativize by row sum with a function that has already been created:
+source("rel.R")  # This loads a function rel() contained in a diff script
+  # this uses that function
+  # need to specify which transition matrix you want, and whether you want to cal by row or column
+tr.72.84 <- rel(t.72.84, byrow=TRUE, bycol=FALSE) 
+tr.72.84   # this is the transition matrix (P)
+
+
+```
+**The transition matrix that we calculated above this is for a 12-yr time step, but we need annual steps for our projections...**
+
+```{r}
+  # so load this script as well
+source("fix_tm.R")
+  # and then use this function, which generates probability of transition
+  # again you need to specify which transition matrix you want
+  # and also how many years
+  # use the one w relativized values.
+P <- fix.steps(tr.72.84, 12)  
+```
+
+Let's look at that annual transition matrix (P)
+*Remeber that starting condition is in the rows*
+```{r}
+P  
+```
+
+**Question:**  
+What was the annual harvest rate of old growth forests between 1972 and 1984? (check pnw.classes if you forget which class is which)
+***
+
+We can calculate P for the other time step (1984-1991), for comparison:
+```{r}
+
+t.84.91 <- table(pnw.data$X1984,pnw.data$X1991)
+t.84.91
+tr.84.91 <- rel(t.84.91, byrow=TRUE, bycol=FALSE)
+P.84.91 <- fix.steps(tr.84.91, 7)
+  # annual probability of transition to other class
+P.84.91
+```
+
+## Projections
+Now that we have this information, we can use it to project in to the future
+```{r} 
+  # set a variable that specifies how many land cover types.
+ntypes <- length(inits) # 5 types, in this case
+
+# create some empty data frames for the output 
+ntimes <- 999        
+t <- vector(length=ntimes)
+transient <- matrix(nrow=ntimes, ncol=ntypes)
+```
+Let's stop and explore what we just created, so we know what we've done:
+(we created some empty objects)
+```{r}
+str(t)
+str(transient)
+```
+
+Now we need to specify a few more things:
+```{r}
+tmp <- inits # copy these to simplify the projections
+
+t[1] <- 1972   # set the start values -- start year &
+transient[1,] <- tmp    # start proportions
+
+t1 <- 1972   # start year
+```
+
+And finally, here's a function to actually do the projections:
+It loads the numbers in to our empty objects that we created above.
+```{r}
+# the actual projection:
+for (i in 1:ntimes) {
+	t[i]<-t1+i
+	transient[i,]<-tmp %*% P # matrix multiplication in R lingo
+	tmp<-transient[i,]
+}
+
+# some cosmetics ...
+# add the "date" column for convenience:
+out <- data.frame(cbind(t, transient)) 
+ 
+# create labels for the output columns:
+names(out)<-c("Year","ClearCut","EarlySeral","MidSeral","Mature","OldGrowth")
+
+# dump the output to a CSV, in case we want to open it in Excel:
+write.csv(out,"markov_out.csv")
+
+```
+
+**Model Verification**
+Plot the output, first for just the initial few years:
+```{r}
+plot(out[,1],out[,2],type="l",col="brown", lwd=2, xlim=c(1970,1995),ylim=c(0,0.5),xlab="Year",ylab="Proportion")
+lines(out[,1],out[,3],type="l", col="gold", lwd=2)
+lines(out[,1],out[,4],type="l", col="light green", lwd=2)
+lines(out[,1],out[,5],type="l", col="green", lwd=2)
+lines(out[,1],out[,6],type="l", col="dark green", lwd=2)
+```
+Now plot the actual data on top of the model projections:
+How did we do at replicating the actual observed values?
+```{r}
+# same as above:
+plot(out[,1],out[,2],type="l",col="brown", lwd=2, xlim=c(1970,1995),ylim=c(0,0.5),xlab="Year",ylab="Proportion")
+lines(out[,1],out[,3],type="l", col="gold", lwd=2)
+lines(out[,1],out[,4],type="l", col="light green", lwd=2)
+lines(out[,1],out[,5],type="l", col="green", lwd=2)
+lines(out[,1],out[,6],type="l", col="dark green", lwd=2)
+
+# put the actual data points on top of the model projections:
+points(rep(years[1],ntypes), p1972, pch=19, col=c("brown","gold","light green","green","dark green"))
+points(rep(years[2],ntypes), p1984, pch=19, col=c("brown","gold","light green","green","dark green"))
+points(rep(years[3],ntypes), p1991, pch=19, col=c("brown","gold","light green","green","dark green"))
+legend(x="topright",legend=names(out[2:6]), lwd=2, col=c("brown","gold","light green","green","dark green"),pch=19)
+title("Model verification and validation")
+
+```
+
+**Question:**  
+Does the model projection match the observed values? If not, can you suggest some reasons why?
+
+
+### Model Projection
+Plot the entire simulation, so we can see the projected trends in to the future:
+```{r}
+plot(out[,1],out[,2],type="l",col="brown", lwd=2, xlim=c(1970,2600),ylim=c(0,0.5),xlab="Year",ylab="Proportion")
+lines(out[,1],out[,3],type="l", col="gold", lwd=2)
+lines(out[,1],out[,4],type="l", col="light green", lwd=2)
+lines(out[,1],out[,5],type="l", col="green", lwd=2)
+lines(out[,1],out[,6],type="l", col="dark green", lwd=2)
+legend(x="topright",legend=names(out[2:6]),col=c("brown","gold","light green","green","dark green"),lwd=2)
+title("Baseline case, projected 1000 yr")
+```
+
+**Question:**  
+Does the model ever reach a steady state? (no transitions)  
+At approximately what year does the amount of remaining Old Growth Forest fall below 10%?
+
+### Take home:
+Try adjusting the harvest rates, by cutting them in half ... What happens to the prevalence of old growth & mature forests?
+
+```{r}
+P2 <- P
+P[4,1]   # this is the cell for transition from mature forest to clear cut.
+h41 <- P[4,1]/2  # divide it in half
+P2[4,1] <- h41   # and replace it in the matrix
+P2[4,4] <- P[4,4]+h41  # add the remaining to stay mature forest
+P[5,1]    # this is the cell for transition from old growth forest to clear cut.
+h51 <- P[5,1]/2   # divide it in half
+P2[5,1] <- h51   # and replace it in the matrix
+P2[5,5] <- P2[5,5]+h51  # add the remaining to stay old growth forest
+```
+
+**RERUN THE PROJECTION W THESE NEW RATES***
+```{r}
+trans2 <- matrix(nrow=ntimes, ncol=ntypes)
+t1<-1972
+trans2[1,]<-inits
+tmp<-inits
+# the projection:
+for (i in 1:ntimes) {
+	t[i]<-t1+i
+	trans2[i,]<-tmp %*% P2 # matrix multiplication in R lingo
+	tmp<-trans2[i,]
+}
+out2 <- data.frame(cbind(t, trans2))
+out2<- rbind(c(t1,inits),out2)
+names(out2)<-c("time",paste("C",as.character(1:ntypes),sep=""))
+```
+
+### plot the new simulation:
+```{r}
+plot(out2[,1],out2[,2],type="l",col=1, lwd=2, xlim=c(1970,2975),ylim=c(0,0.5),xlab="Year",ylab="Proportion")
+lines(out2[,1],out2[,3],type="l", col=2, lwd=2)
+lines(out2[,1],out2[,4],type="l", col=3, lwd=2)
+lines(out2[,1],out2[,5],type="l", col=4, lwd=2)
+lines(out2[,1],out2[,6],type="l", col=5, lwd=2)
+legend(x="topright",legend=names(out[2:6]),col=1:5,pch=19)
+title("Projection under half the harvesting rate")
+```
+**QUESTION**
+Can you find a harvest rate that will keep old growth forests above 30%? (reuse the code above) 
+What other factors would have to change in order to improve the outcome? 
+
+

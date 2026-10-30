@@ -1,0 +1,182 @@
+HARVEST Lite Help
+
+CONTENTS
+
+Introduction
+How to use HARVEST Lite 
+Common problems and how to fix them
+How to find information on the Web about HARVEST and its application 
+
+INTRODUCTION
+
+   HARVEST Lite is a simplified version of HARVEST designed for use as an educational tool.  
+HARVEST was designed to simulate the even-aged timber harvest techniques that generate a new 
+stand of trees that are all the same age (e.g., clearcutting, shelterwood, seed tree 
+techniques).  The model was built based on knowledge of the past dispersion of timber harvests 
+on the Hoosier National Forest (Indiana, USA), and has been shown to generate patterns similar 
+to those produced by timber management.  For educational use, the model was simplified to 
+minimize the input data required, and to allow you to experiment with the most interesting and 
+important parameters, without causing confusion by too much complexity.  The model allows you 
+to change the size of timber harvest openings, the total area harvested, and the spatial 
+distribution of harvested areas (whether harvests will be clumped or dispersed).
+
+HOW TO USE HARVEST Lite 
+
+   Start HARVEST Lite by double clicking on its icon (or HarvLite.exe).  The following menu items
+are available on the Menu bar at the top of the window.
+
+MODEL
+
+   This menu item contains the controls for the simulation part of HARVEST Lite.
+
+---Choose base map -----
+
+   This command allows you to select a stand age map file on which HARVEST Lite can operate.  A 
+standard Windows File Selection dialog box will open, allowing you to choose the file you wish 
+to use.  The input files must be in ERDAS v. 7.4, 8-bit format, and will typically have a .gis 
+extension.  This map must contain values representing the age (in decades) of the forest on 
+each cell.  When you select a base map, it will be displayed on the screen.  A text window will 
+also appear.  This window will allow HARVEST Lite to communicate results and progress to you. 
+The information appearing in this window is also recorded in a log file that you may save for 
+future reference.
+
+---Execute -----
+
+   This option will cause HARVEST Lite to conduct a simulation of harvesting on the currently 
+loaded input map.  When you press the OK button, HARVEST Lite will conduct the simulation.  
+When the simulation is completed, the new, modified forest age map will be displayed, 
+reflecting the harvests simulated by HARVEST Lite.
+
+   You will be prompted for 3 items of information:
+
+   1.  Mean harvest size - Enter the average size of harvests to be placed on the landscape 
+(forest age map).  HARVEST Lite will generate random sizes around this mean, with a standard 
+deviation of 10% of the mean size you specify.
+
+   2.  Percent of forest area to cut - Enter a percentage between 0.1 and 100%.  HARVEST Lite 
+will scan the input age map to determine how much of it is forested (non-zero values).  HARVEST 
+Lite will attempt to harvest the percentage of the forested cells each decade you specify.  It 
+may actually cut more or less, usually within an amount less than half of the mean size you 
+specified.  HARVEST Lite may also not find enough cells that are old enough to fully allocate 
+your request in every decade.  (This version requires forest to be at least 80 years old to be 
+cut.)  The number of cells actually cut each decade is recorded in the log file.
+
+   3.  Dispersion method - HARVEST Lite will choose locations for harvests using one of 2 
+algorithms.  The dispersed method randomly selects locations for each harvest independently of 
+all other locations.  The clumped method randomly chooses a focal site, and then places 9 
+harvests randomly in the vicinity of that focal site.  Under both methods, forested cells must 
+always be older than 8 decades to be cut.
+
+---Exit -----
+
+   This option will cause HARVEST Lite to terminate.  You will be prompted to save files, 
+should you desire to do so.
+
+
+ANALYZE
+
+   This menu item causes HARVEST Lite to conduct an analysis of the patch structure of the 
+current forest age map, or to analyze the amount of interior and edge habitat found in the 
+current forest age map.
+
+---Patches (Before harvest) -----
+
+   This option is enabled only when you have not yet run a harvest simulation (before selecting 
+'Execute').  It will calculate a number of measures of landscape structure including the age 
+distribution, the length of linear edge between patches of different ages (known as forest 
+stands), the average size of stands of similar age, and the distribution of patch sizes by age 
+class.  This information is recorded in the running log.
+
+---Patches (After harvest) -----
+
+   This option is enabled only after you have simulated harvest (after selecting 'Execute'). 
+The same measures are calculated as described above, and are recorded in the running log.
+
+---Interior (Before harvest) -----
+
+   This option is enabled only when you have not yet run a harvest simulation (before selecting 
+'Execute').  It will calculate the amount of interior and edge habitat.
+
+   You will be prompted to enter an edge-buffer width.  This is the distance (in meters) that 
+edge effects extend into the forest (maximum value of 1200 m).  HARVEST will convert the number
+you enter to the nearest # of pixels, because the actual value used must be a multiple of the 
+pixel width.  This information is recorded in the running log.
+
+   You will also be prompted to enter the number of decades that harvested openings Persist 
+(Opening persistence time).  When analyzing forest interior and edge, any stand less than or 
+equal to this age will be considered a forest opening.  Stands older than this value are 
+assumed to have returned to a closed canopy condition.
+
+---Interior (After harvest) -----
+
+   This option is enabled only after you have simulated harvest (after selecting 'Execute'). 
+The same measures are calculated as described above.
+
+
+SAVE
+
+   This menu item allows you to save the results of your analyses.
+
+---Age map -----
+
+   You may save the simulated age map after a simulation run.  The map will be saved in ERDAS 
+7.4 format, and can be used as input to other HARVEST Lite runs, or loaded into many common GIS 
+systems.  Note that once you load a new base map, all previous maps are cleared from memory, so 
+remember to save maps prior to loading another base map.
+
+---Interior map -----
+
+   You may also save the current interior map at any time.  This map is also saved in ERDAS 7.4 
+format.  The map you see on the screen is the map that will be saved.  Once you conduct a new 
+analysis of interior (or load a new base map), any prior interior maps are cleared from memory 
+and cannot be saved later.
+
+---Log file -----
+
+   This option saves the contents of the 'Progress and Results' window to a text file.  You may 
+save this log information at any time, but please note that saving clears the window.  
+The window is also cleared when you load (or re-load) a base map.
+
+
+HELP
+
+   The help menu provides access to the file you are now reading.  You may also determine the 
+version of HARVEST Lite you are using by selecting 'About.'
+
+
+
+COMMON PROBLEMS AND HOW TO FIX THEM
+
+Problem:  HARVEST Lite warns me that there are not enough colors available.
+
+Fix:  Go to the Windows Control Panel and select 'Display'.  Set colors to 'High color (16-
+bit)'.  You may need to re-start your computer for this change to take effect.
+
+Problem:  The fonts in the 'Progress and Results' window are so large that some of the output 
+is outside the window.
+
+Fix: Enlarge the window by dragging the lower-right corner.  If the text will still not fit, go 
+to the Windows Control Panel and select 'Display.'  Set the 'font size' to 'Small.'  If it is 
+already 'Small,' you will need to rely on output saved to the log file to see all the values.
+
+Problem:  After the screen saver has been on, or after the program is minimized, some of the 
+maps have disappeared.  How can I get them back?
+
+Fix:  This is a bug being worked on.  The program is not properly notified (by Windows) that 
+windows have been exposed and need to be re-painted.  If you move another window over the blank 
+window, and then away, the program will be properly notified that the window has been exposed, 
+and the window will be repainted.  Sometimes clicking first on the 'Progress' window and then 
+the blank window, will be enough to get the blank window back.
+
+Problem:  The fonts on the map legends are too small to read.
+
+Fix:  When you first open HARVEST, maximize the main window then load your maps.  The maps will
+be drawn larger, and this will result in larger legend fonts.
+
+
+HOW TO FIND INFORMATION ON THE WEB ABOUT HARVEST AND ITS APPLICATION 
+
+   Visit the Web site of the Landscape Ecology Research Work Unit of the USDA Forest Service 
+North Central Research Station at http://www.ncfes.umn.edu/4153.  There you will find links to 
+research products (including publications that describe research using HARVEST) and analysis 
+tools, including the full HARVEST model.

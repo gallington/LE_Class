@@ -1,0 +1,680 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Markov Models Lab},
+  pdfauthor={gallington},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Markov Models Lab}
+\author{gallington}
+\date{3/2/2020}
+
+\begin{document}
+\maketitle
+
+\subsection{Intro}\label{intro}
+
+In this lab we will explore how to make projections of future landscape
+composition, based on past landscape change dynamics. You will need all
+of the files in the MarkovLab folder in the class Shared Drive.
+
+First set your working directory to wherever you have stored your data
+files:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#setwd("./MarkovLab")  }
+\end{Highlighting}
+\end{Shaded}
+
+Let's explore the landscapes first. Load the classified imagery
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pnw72}\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"./images/pnw72.gif"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: [rast] unknown extent
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pnw84}\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"./images/pnw84.gif"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: [rast] unknown extent
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pnw91}\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"./images/pnw91.gif"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: [rast] unknown extent
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# creating a table of the class names for future reference in case we forget which class is which:}
+\NormalTok{class.legend }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Non{-}forest"}\NormalTok{,}
+                 \StringTok{"ClearCut"}\NormalTok{,}
+                 \StringTok{"EarlySeral"}\NormalTok{,}
+                 \StringTok{"MidSeral"}\NormalTok{,}
+                 \StringTok{"Mature"}\NormalTok{,}
+                 \StringTok{"OldGrowth"}\NormalTok{)}
+\NormalTok{pnw.classes}\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, class.legend))}
+\FunctionTok{names}\NormalTok{(pnw.classes)}\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"ClassNum"}\NormalTok{, }\StringTok{"ClassName"}\NormalTok{)}
+\CommentTok{\# then view it}
+\NormalTok{pnw.classes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ClassNum  ClassName
+## 1        0 Non-forest
+## 2        1   ClearCut
+## 3        2 EarlySeral
+## 4        3   MidSeral
+## 5        4     Mature
+## 6        5  OldGrowth
+\end{verbatim}
+
+And then plot it 1972
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#landscapetools::show\_landscape(pnw72)  \# this is how we did it before}
+
+\FunctionTok{plot}\NormalTok{(pnw72, }\CommentTok{\# but you can also do it this way}
+      \AttributeTok{main =} \StringTok{"1972"}\NormalTok{ , }\AttributeTok{col =}\NormalTok{ (}\FunctionTok{terrain.colors}\NormalTok{(}\AttributeTok{n=} \DecValTok{6}\NormalTok{, }\AttributeTok{rev =} \ConstantTok{TRUE}\NormalTok{)), }\AttributeTok{legend =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: [rast] unknown extent
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =}\NormalTok{ class.legend, }\AttributeTok{fill =} \FunctionTok{rev}\NormalTok{(}\FunctionTok{terrain.colors}\NormalTok{(}\DecValTok{7}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-2-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(pnw84, }\CommentTok{\# but you can also do it this way}
+      \AttributeTok{main =} \StringTok{"1984"}\NormalTok{ , }\AttributeTok{col =} \FunctionTok{rev}\NormalTok{(}\FunctionTok{terrain.colors}\NormalTok{(}\DecValTok{6}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: [rast] unknown extent
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-3-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(pnw91, }\CommentTok{\# but you can also do it this way}
+      \AttributeTok{main =} \StringTok{"1991"}\NormalTok{ , }\AttributeTok{col =} \FunctionTok{rev}\NormalTok{(}\FunctionTok{terrain.colors}\NormalTok{(}\DecValTok{6}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: [rast] unknown extent
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-4-1.pdf}}
+
+\subsection{Modeling transitions over
+time}\label{modeling-transitions-over-time}
+
+Now we can move on to the modeling work.
+
+First load the sample data, which has already been generated for you.
+This dataframe lists the observed class of 200 randomly cast points for
+each year. Load the data file and explore it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 200 sample points that have been examined and their classifications confirmed.}
+\NormalTok{pnw.data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"sample200.csv"}\NormalTok{)  }
+\FunctionTok{names}\NormalTok{(pnw.data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sample" "X1972"  "X1984"  "X1991"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(pnw.data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 200   4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# also store the \# of rows to it\textquotesingle{}s own variable bc we will need that later}
+\NormalTok{sample.n }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(pnw.data)[[}\DecValTok{1}\NormalTok{]] }\CommentTok{\# 1st dimension, nrow, = N   }
+\end{Highlighting}
+\end{Shaded}
+
+Set initial conditions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# tally for 1972}
+\NormalTok{t1972 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(pnw.data}\SpecialCharTok{$}\NormalTok{X1972)) }
+  \CommentTok{\# proportions of each class in 1972}
+\NormalTok{p1972 }\OtherTok{\textless{}{-}}\NormalTok{ t1972}\SpecialCharTok{/}\NormalTok{sample.n   }
+  \CommentTok{\# creates a vector of the initial proportion of each class}
+  \CommentTok{\# this is the xi that you\textquotesingle{}ll need to multiply by the transition matrix}
+\NormalTok{inits }\OtherTok{\textless{}{-}} \FunctionTok{as.vector}\NormalTok{(p1972)}
+\end{Highlighting}
+\end{Shaded}
+
+Also calculate the tallies for 1984 and 1991
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# tally for 1984}
+\NormalTok{t1984 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(pnw.data}\SpecialCharTok{$}\NormalTok{X1984))}
+  \CommentTok{\# proportions of each class in 1984}
+\NormalTok{p1984 }\OtherTok{\textless{}{-}}\NormalTok{ t1984}\SpecialCharTok{/}\NormalTok{sample.n}
+  \CommentTok{\# etc.}
+\NormalTok{t1991 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(pnw.data}\SpecialCharTok{$}\NormalTok{X1991))}
+\NormalTok{p1991 }\OtherTok{\textless{}{-}}\NormalTok{ t1991}\SpecialCharTok{/}\NormalTok{sample.n}
+\end{Highlighting}
+\end{Shaded}
+
+\section{look at the data over time
+\ldots{}}\label{look-at-the-data-over-time}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{years }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1972}\NormalTok{, }\DecValTok{1984}\NormalTok{, }\DecValTok{1991}\NormalTok{)}
+\NormalTok{pnw.d2 }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{as.vector}\NormalTok{(p1972), }\FunctionTok{as.vector}\NormalTok{(p1984), }\FunctionTok{as.vector}\NormalTok{(p1991))}
+\NormalTok{pnw.d2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(years, pnw.d2))}
+  \CommentTok{\# name the columns: Year and class name}
+\FunctionTok{names}\NormalTok{(pnw.d2) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{,}\StringTok{"ClearCut"}\NormalTok{,}\StringTok{"EarlySeral"}\NormalTok{,}\StringTok{"MidSeral"}\NormalTok{,}\StringTok{"Mature"}\NormalTok{,}\StringTok{"OldGrowth"}\NormalTok{)  }\CommentTok{\#NOT TIDY}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Now let's plot the observed
+data:}\label{now-lets-plot-the-observed-data}
+
+\section{copy this plot into your lab
+report}\label{copy-this-plot-into-your-lab-report}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{attach}\NormalTok{(pnw.d2)}
+\FunctionTok{plot}\NormalTok{(Year, ClearCut, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{1970}\NormalTok{,}\DecValTok{1995}\NormalTok{), }\AttributeTok{xlab=}\StringTok{"Year"}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{ylab=}\StringTok{"Proportion"}\NormalTok{, }\AttributeTok{type=}\StringTok{"b"}\NormalTok{, }\AttributeTok{pch=}\DecValTok{19}\NormalTok{, }\AttributeTok{col=}\StringTok{"brown"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(Year,EarlySeral,}\AttributeTok{type=}\StringTok{"b"}\NormalTok{,}\AttributeTok{pch=}\DecValTok{19}\NormalTok{,}\AttributeTok{col=}\StringTok{"gold"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(Year,MidSeral,}\AttributeTok{type=}\StringTok{"b"}\NormalTok{,}\AttributeTok{pch=}\DecValTok{19}\NormalTok{,}\AttributeTok{col=}\StringTok{"light green"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(Year,Mature,}\AttributeTok{type=}\StringTok{"b"}\NormalTok{,}\AttributeTok{pch=}\DecValTok{19}\NormalTok{,}\AttributeTok{col=}\StringTok{"green"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(Year,OldGrowth,}\AttributeTok{type=}\StringTok{"b"}\NormalTok{,}\AttributeTok{pch=}\DecValTok{19}\NormalTok{,}\AttributeTok{col=}\StringTok{"dark green"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x=}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"ClearCut"}\NormalTok{,}\StringTok{"EarlySeral"}\NormalTok{,}\StringTok{"MidSeral"}\NormalTok{,}\StringTok{"Mature"}\NormalTok{,}\StringTok{"OldGrowth"}\NormalTok{), }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{pch=}\DecValTok{19}\NormalTok{, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"brown"}\NormalTok{,}\StringTok{"gold"}\NormalTok{,}\StringTok{"light green"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"dark green"}\NormalTok{), }\AttributeTok{bty=}\StringTok{"n"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/pressure-1.pdf}}
+
+\section{Now we'll use that data to generation a tally matrix (Table
+8.2) and then a transition matrix (Table
+8.3):}\label{now-well-use-that-data-to-generation-a-tally-matrix-table-8.2-and-then-a-transition-matrix-table-8.3}
+
+\emph{NOTE:} R generates the matrices with t1 on the rows and t2 on the
+columns
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# build the transition matrix ...}
+\NormalTok{t.}\FloatTok{72.84} \OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(pnw.data}\SpecialCharTok{$}\NormalTok{X1972,pnw.data}\SpecialCharTok{$}\NormalTok{X1984)}
+\NormalTok{t.}\FloatTok{72.84} \CommentTok{\# look at it: this is the transition tally that you need to complete Table 8.2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    
+##      1  2  3  4  5
+##   1 33  4  0  0  0
+##   2  0  7  1  0  0
+##   3  0  0 19  2  0
+##   4  3  0  0 39  1
+##   5 10  0  0  0 81
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# relativize by row sum with a function that has already been created:}
+\FunctionTok{source}\NormalTok{(}\StringTok{"rel.R"}\NormalTok{)  }\CommentTok{\# This loads a function rel() contained in a diff script}
+  \CommentTok{\# this uses that function}
+  \CommentTok{\# need to specify which transition matrix you want, and whether you want to cal by row or column}
+\NormalTok{tr.}\FloatTok{72.84} \OtherTok{\textless{}{-}} \FunctionTok{rel}\NormalTok{(t.}\FloatTok{72.84}\NormalTok{, }\AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{bycol=}\ConstantTok{FALSE}\NormalTok{) }
+\NormalTok{tr.}\FloatTok{72.84}   \CommentTok{\# this is the transition matrix (P) that you need to complete Table 8.3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    
+##              1          2          3          4          5
+##   1 0.89189189 0.10810811 0.00000000 0.00000000 0.00000000
+##   2 0.00000000 0.87500000 0.12500000 0.00000000 0.00000000
+##   3 0.00000000 0.00000000 0.90476190 0.09523810 0.00000000
+##   4 0.06976744 0.00000000 0.00000000 0.90697674 0.02325581
+##   5 0.10989011 0.00000000 0.00000000 0.00000000 0.89010989
+\end{verbatim}
+
+\textbf{The transition matrix that we calculated above this is for a
+12-yr time step, but we need annual steps for our projections\ldots{}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# so load this script as well}
+\FunctionTok{source}\NormalTok{(}\StringTok{"fix\_tm.R"}\NormalTok{)}
+  \CommentTok{\# and then use this function, which generates probability of transition}
+  \CommentTok{\# again you need to specify which transition matrix you want}
+  \CommentTok{\# and also how many years}
+  \CommentTok{\# use the one w relativized values.}
+\NormalTok{P }\OtherTok{\textless{}{-}} \FunctionTok{fix.steps}\NormalTok{(tr.}\FloatTok{72.84}\NormalTok{, }\DecValTok{12}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+Let's look at that annual transition matrix (P) \emph{Remember that
+starting condition is in the rows}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    
+##               1           2           3           4           5
+##   1 0.990990991 0.009009009 0.000000000 0.000000000 0.000000000
+##   2 0.000000000 0.989583333 0.010416667 0.000000000 0.000000000
+##   3 0.000000000 0.000000000 0.992063492 0.007936508 0.000000000
+##   4 0.005813953 0.000000000 0.000000000 0.992248062 0.001937984
+##   5 0.009157509 0.000000000 0.000000000 0.000000000 0.990842491
+\end{verbatim}
+
+\textbf{Question:}\\
+What was the annual harvest rate of old growth forests between 1972 and
+1984? (check pnw.classes if you forget which class is which) ***
+
+We can calculate P for the other time step (1984-1991), for comparison:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t.}\FloatTok{84.91} \OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(pnw.data}\SpecialCharTok{$}\NormalTok{X1984,pnw.data}\SpecialCharTok{$}\NormalTok{X1991)}
+\NormalTok{t.}\FloatTok{84.91}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    
+##      1  2  3  4  5
+##   1 46  0  0  0  0
+##   2  0 11  0  0  0
+##   3  2  0 18  0  0
+##   4 10  0  0 31  0
+##   5 17  0  0  0 65
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tr.}\FloatTok{84.91} \OtherTok{\textless{}{-}} \FunctionTok{rel}\NormalTok{(t.}\FloatTok{84.91}\NormalTok{, }\AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{bycol=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{P.}\FloatTok{84.91} \OtherTok{\textless{}{-}} \FunctionTok{fix.steps}\NormalTok{(tr.}\FloatTok{84.91}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+  \CommentTok{\# annual probability of transition to other class}
+\NormalTok{P.}\FloatTok{84.91}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    
+##              1          2          3          4          5
+##   1 1.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+##   2 0.00000000 1.00000000 0.00000000 0.00000000 0.00000000
+##   3 0.01428571 0.00000000 0.98571429 0.00000000 0.00000000
+##   4 0.03484321 0.00000000 0.00000000 0.96515679 0.00000000
+##   5 0.02961672 0.00000000 0.00000000 0.00000000 0.97038328
+\end{verbatim}
+
+\subsection{Projections}\label{projections}
+
+Now that we have this information, we can use it to project in to the
+future
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# set a variable that specifies how many land cover types.}
+\NormalTok{ntypes }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(inits) }\CommentTok{\# 5 types, in this case}
+
+\CommentTok{\# create some empty data frames for the output }
+\NormalTok{ntimes }\OtherTok{\textless{}{-}} \DecValTok{999}        
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\AttributeTok{length=}\NormalTok{ntimes)}
+\NormalTok{transient }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{nrow=}\NormalTok{ntimes, }\AttributeTok{ncol=}\NormalTok{ntypes)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's stop and explore what we just created, so we know what we've done:
+(we created some empty objects)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(t)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  logi [1:999] FALSE FALSE FALSE FALSE FALSE FALSE ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(transient)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  logi [1:999, 1:5] NA NA NA NA NA NA ...
+\end{verbatim}
+
+Now we need to specify a few more things:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tmp }\OtherTok{\textless{}{-}}\NormalTok{ inits }\CommentTok{\# copy these to simplify the projections}
+
+\NormalTok{t[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1972}   \CommentTok{\# set the start values {-}{-} start year \&}
+\NormalTok{transient[}\DecValTok{1}\NormalTok{,] }\OtherTok{\textless{}{-}}\NormalTok{ tmp    }\CommentTok{\# start proportions}
+
+\NormalTok{t1 }\OtherTok{\textless{}{-}} \DecValTok{1972}   \CommentTok{\# start year}
+\end{Highlighting}
+\end{Shaded}
+
+And finally, here's a function to actually do the projections: It loads
+the numbers that it generates into the empty objects that we created
+above.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# the actual projection:}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{ntimes) \{}
+\NormalTok{    t[i]}\OtherTok{\textless{}{-}}\NormalTok{t1}\SpecialCharTok{+}\NormalTok{i}
+\NormalTok{    transient[i,]}\OtherTok{\textless{}{-}}\NormalTok{tmp }\SpecialCharTok{\%*\%}\NormalTok{ P }\CommentTok{\# matrix multiplication in R lingo}
+\NormalTok{    tmp}\OtherTok{\textless{}{-}}\NormalTok{transient[i,]}
+\NormalTok{\}}
+
+\CommentTok{\# some cosmetics ...}
+\CommentTok{\# add the "date" column for convenience:}
+\NormalTok{out }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(t, transient)) }
+ 
+\CommentTok{\# create labels for the output columns:}
+\FunctionTok{names}\NormalTok{(out)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{,}\StringTok{"ClearCut"}\NormalTok{,}\StringTok{"EarlySeral"}\NormalTok{,}\StringTok{"MidSeral"}\NormalTok{,}\StringTok{"Mature"}\NormalTok{,}\StringTok{"OldGrowth"}\NormalTok{)}
+
+\CommentTok{\# dump the output to a CSV, in case we want to open it in Excel:}
+\FunctionTok{write.csv}\NormalTok{(out,}\StringTok{"markov\_out.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model Verification} Plot the output, first for just the initial
+few years:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{2}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{col=}\StringTok{"brown"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{1970}\NormalTok{,}\DecValTok{1995}\NormalTok{),}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{xlab=}\StringTok{"Year"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{"Proportion"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{3}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"gold"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{4}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"light green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{5}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{6}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"dark green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-17-1.pdf}}
+Now plot the actual data on top of the model projections: How did we do
+at replicating the actual observed values?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# same as above:}
+\FunctionTok{plot}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{2}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{col=}\StringTok{"brown"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{1970}\NormalTok{,}\DecValTok{1995}\NormalTok{),}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{xlab=}\StringTok{"Year"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{"Proportion"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{3}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"gold"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{4}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"light green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{5}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{6}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"dark green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# put the actual data points on top of the model projections:}
+\FunctionTok{points}\NormalTok{(}\FunctionTok{rep}\NormalTok{(years[}\DecValTok{1}\NormalTok{],ntypes), p1972, }\AttributeTok{pch=}\DecValTok{19}\NormalTok{, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"brown"}\NormalTok{,}\StringTok{"gold"}\NormalTok{,}\StringTok{"light green"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"dark green"}\NormalTok{))}
+\FunctionTok{points}\NormalTok{(}\FunctionTok{rep}\NormalTok{(years[}\DecValTok{2}\NormalTok{],ntypes), p1984, }\AttributeTok{pch=}\DecValTok{19}\NormalTok{, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"brown"}\NormalTok{,}\StringTok{"gold"}\NormalTok{,}\StringTok{"light green"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"dark green"}\NormalTok{))}
+\FunctionTok{points}\NormalTok{(}\FunctionTok{rep}\NormalTok{(years[}\DecValTok{3}\NormalTok{],ntypes), p1991, }\AttributeTok{pch=}\DecValTok{19}\NormalTok{, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"brown"}\NormalTok{,}\StringTok{"gold"}\NormalTok{,}\StringTok{"light green"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"dark green"}\NormalTok{))}
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x=}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{names}\NormalTok{(out[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{]), }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"brown"}\NormalTok{,}\StringTok{"gold"}\NormalTok{,}\StringTok{"light green"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"dark green"}\NormalTok{),}\AttributeTok{pch=}\DecValTok{19}\NormalTok{)}
+\FunctionTok{title}\NormalTok{(}\StringTok{"Model verification and validation"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-18-1.pdf}}
+
+\textbf{Question:}\\
+Does the model projection lines match the observed values? If not, can
+you suggest some reasons why?
+
+\subsubsection{Model Projection}\label{model-projection}
+
+Plot the entire simulation, so we can see the projected trends in to the
+future:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{2}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{col=}\StringTok{"brown"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{1970}\NormalTok{,}\DecValTok{2600}\NormalTok{),}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{xlab=}\StringTok{"Year"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{"Proportion"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{3}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"gold"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{4}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"light green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{5}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out[,}\DecValTok{1}\NormalTok{],out[,}\DecValTok{6}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"dark green"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x=}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{names}\NormalTok{(out[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{]),}\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"brown"}\NormalTok{,}\StringTok{"gold"}\NormalTok{,}\StringTok{"light green"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"dark green"}\NormalTok{),}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{title}\NormalTok{(}\StringTok{"Baseline case, projected 1000 yr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-19-1.pdf}}
+
+\textbf{Question:}\\
+Does the model ever reach a steady state? (no transitions)\\
+At approximately what year does the amount of remaining Old Growth
+Forest fall below 10\%?
+
+\subsubsection{Take home:}\label{take-home}
+
+Try adjusting the harvest rates, by cutting them in half \ldots{} What
+happens to the prevalence of old growth \& mature forests?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P2 }\OtherTok{\textless{}{-}}\NormalTok{ P}
+\NormalTok{P[}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{]   }\CommentTok{\# this is the cell for transition from mature forest to clear cut.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.005813953
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{h41 }\OtherTok{\textless{}{-}}\NormalTok{ P[}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{]}\SpecialCharTok{/}\DecValTok{2}  \CommentTok{\# divide it in half}
+\NormalTok{P2[}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ h41   }\CommentTok{\# and replace it in the matrix}
+\NormalTok{P2[}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ P[}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{]}\SpecialCharTok{+}\NormalTok{h41  }\CommentTok{\# add the remaining to stay mature forest}
+\NormalTok{P[}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{]    }\CommentTok{\# this is the cell for transition from old growth forest to clear cut.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.009157509
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{h51 }\OtherTok{\textless{}{-}}\NormalTok{ P[}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{]}\SpecialCharTok{/}\DecValTok{2}   \CommentTok{\# divide it in half}
+\NormalTok{P2[}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ h51   }\CommentTok{\# and replace it in the matrix}
+\NormalTok{P2[}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ P2[}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{]}\SpecialCharTok{+}\NormalTok{h51  }\CommentTok{\# add the remaining to stay old growth forest}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{RERUN THE PROJECTION W THESE NEW RATES}*
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trans2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{nrow=}\NormalTok{ntimes, }\AttributeTok{ncol=}\NormalTok{ntypes)}
+\NormalTok{t1}\OtherTok{\textless{}{-}}\DecValTok{1972}
+\NormalTok{trans2[}\DecValTok{1}\NormalTok{,]}\OtherTok{\textless{}{-}}\NormalTok{inits}
+\NormalTok{tmp}\OtherTok{\textless{}{-}}\NormalTok{inits}
+\CommentTok{\# the projection:}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{ntimes) \{}
+\NormalTok{    t[i]}\OtherTok{\textless{}{-}}\NormalTok{t1}\SpecialCharTok{+}\NormalTok{i}
+\NormalTok{    trans2[i,]}\OtherTok{\textless{}{-}}\NormalTok{tmp }\SpecialCharTok{\%*\%}\NormalTok{ P2 }\CommentTok{\# matrix multiplication in R lingo}
+\NormalTok{    tmp}\OtherTok{\textless{}{-}}\NormalTok{trans2[i,]}
+\NormalTok{\}}
+\NormalTok{out2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(t, trans2))}
+\NormalTok{out2}\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{c}\NormalTok{(t1,inits),out2)}
+\FunctionTok{names}\NormalTok{(out2)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"time"}\NormalTok{,}\FunctionTok{paste}\NormalTok{(}\StringTok{"C"}\NormalTok{,}\FunctionTok{as.character}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{ntypes),}\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{plot the new simulation:}\label{plot-the-new-simulation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(out2[,}\DecValTok{1}\NormalTok{],out2[,}\DecValTok{2}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{col=}\DecValTok{1}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{1970}\NormalTok{,}\DecValTok{2975}\NormalTok{),}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{xlab=}\StringTok{"Year"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{"Proportion"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out2[,}\DecValTok{1}\NormalTok{],out2[,}\DecValTok{3}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\DecValTok{2}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out2[,}\DecValTok{1}\NormalTok{],out2[,}\DecValTok{4}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\DecValTok{3}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out2[,}\DecValTok{1}\NormalTok{],out2[,}\DecValTok{5}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\DecValTok{4}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(out2[,}\DecValTok{1}\NormalTok{],out2[,}\DecValTok{6}\NormalTok{],}\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\DecValTok{5}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x=}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{names}\NormalTok{(out[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{6}\NormalTok{]),}\AttributeTok{col=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,}\AttributeTok{pch=}\DecValTok{19}\NormalTok{)}
+\FunctionTok{title}\NormalTok{(}\StringTok{"Projection under half the harvesting rate"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{MarkovLab_files/figure-latex/unnamed-chunk-22-1.pdf}}
+\textbf{QUESTION} Can you find a harvest rate that will keep old growth
+forests above 30\%? (reuse the code above) What other factors would have
+to change in order to improve the outcome?
+
+\end{document}

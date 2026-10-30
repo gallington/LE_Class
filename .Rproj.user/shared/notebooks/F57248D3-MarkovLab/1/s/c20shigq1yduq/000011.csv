@@ -1,0 +1,5 @@
+"0","years <- c(1972, 1984, 1991)"
+"0","pnw.d2 <- rbind(as.vector(p1972), as.vector(p1984), as.vector(p1991))"
+"0","pnw.d2 <- data.frame(cbind(years, pnw.d2))"
+"0","  # name the columns: Year and class name"
+"0","names(pnw.d2) <- c(""Year"",""ClearCut"",""EarlySeral"",""MidSeral"",""Mature"",""OldGrowth"")  #NOT TIDY"

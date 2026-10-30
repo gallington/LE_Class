@@ -1,0 +1,271 @@
+
+<h2 class="sr-only">Interactive fractal neutral landscape model explorer showing how the H (roughness) and p (habitat proportion) parameters control spatial pattern</h2>
+
+<style>
+  .controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+  .ctrl-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 160px; }
+  .ctrl-label { font-size: 13px; color: var(--text-secondary); display: flex; justify-content: space-between; }
+  .ctrl-label span { font-weight: 500; color: var(--text-primary); font-family: var(--font-mono); }
+  canvas { display: block; border-radius: 6px; border: 0.5px solid var(--border); }
+  .maps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .map-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .map-title { font-size: 12px; color: var(--text-secondary); text-align: center; }
+  .map-title strong { color: var(--text-primary); font-weight: 500; }
+  .main-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .metrics-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .metric-pill { font-size: 12px; color: var(--text-secondary); background: var(--surface-1); border: 0.5px solid var(--border); border-radius: 20px; padding: 4px 12px; display: flex; gap: 6px; align-items: center; }
+  .metric-pill span { color: var(--text-primary); font-weight: 500; font-family: var(--font-mono); }
+  .section-label { font-size: 12px; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 2px; }
+  .divider { border: none; border-top: 0.5px solid var(--border); margin: 14px 0; }
+</style>
+
+<div style="padding: 1rem 0 0.5rem">
+
+  <div class="controls">
+    <div class="ctrl-group">
+      <div class="ctrl-label">H (roughness / autocorrelation) <span id="h-val">0.5</span></div>
+      <input type="range" id="h-slider" min="0.01" max="0.99" step="0.01" value="0.5">
+      <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content: space-between;"><span>0 = rough, random</span><span>1 = smooth, clumped</span></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-label">p (habitat proportion) <span id="p-val">0.50</span></div>
+      <input type="range" id="p-slider" min="0.05" max="0.95" step="0.01" value="0.50">
+      <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content: space-between;"><span>0.05 = rare</span><span>0.95 = dominant</span></div>
+    </div>
+    <div class="ctrl-group" style="flex:0; min-width:auto; justify-content:flex-end; padding-top:18px;">
+      <button onclick="regenerate()" style="white-space:nowrap">New random seed ↺</button>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+    <div style="font-size: 12px; color: var(--text-muted)">Current map (adjust sliders to update)</div>
+    <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap">
+      <div>
+        <canvas id="main-canvas" width="220" height="220"></canvas>
+      </div>
+      <div style="flex:1; min-width:180px; display:flex; flex-direction:column; gap:10px; padding-top:4px;">
+        <div class="metrics-row">
+          <div class="metric-pill">Patches <span id="m-patches">—</span></div>
+          <div class="metric-pill">Largest patch <span id="m-lp">—</span></div>
+          <div class="metric-pill">Contagion <span id="m-contag">—</span></div>
+          <div class="metric-pill">Percolates? <span id="m-perc">—</span></div>
+        </div>
+        <div style="font-size:12px; color:var(--text-secondary); line-height:1.6; padding-top:4px;" id="interpretation">
+          Use the sliders to explore how H and p interact.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-label">H comparison — same p, three values of H</div>
+  <div class="maps-row" id="h-compare-row" style="margin-top:8px">
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-label">p comparison — same H, three values of p</div>
+  <div class="maps-row" id="p-compare-row" style="margin-top:8px">
+  </div>
+
+</div>
+
+<script>
+const N = 64;
+let seed = Math.random() * 1e9 | 0;
+
+function mulberry32(s) {
+  return function() { s |= 0; s = s + 0x6D2B79F5 | 0;
+    let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+
+function generateFractal(H, size, rng) {
+  const s = size + 1;
+  const arr = new Float32Array(s * s);
+  const at = (x, y) => arr[y * s + x];
+  const set = (x, y, v) => { arr[y * s + x] = v; };
+  const rnd = () => (rng() - 0.5);
+
+  set(0, 0, rnd()); set(size, 0, rnd()); set(0, size, rnd()); set(size, size, rnd());
+
+  let step = size;
+  let scale = 1.0;
+
+  while (step > 1) {
+    const half = step >> 1;
+    scale *= Math.pow(0.5, H);
+
+    for (let y = 0; y < size; y += step) {
+      for (let x = 0; x < size; x += step) {
+        const avg = (at(x, y) + at(x + step, y) + at(x, y + step) + at(x + step, y + step)) / 4;
+        set(x + half, y + half, avg + rnd() * scale);
+      }
+    }
+
+    for (let y = 0; y <= size; y += half) {
+      for (let x = (y % step === 0 ? half : 0); x <= size; x += step) {
+        let sum = 0, cnt = 0;
+        if (x - half >= 0)   { sum += at(x - half, y); cnt++; }
+        if (x + half <= size) { sum += at(x + half, y); cnt++; }
+        if (y - half >= 0)   { sum += at(x, y - half); cnt++; }
+        if (y + half <= size) { sum += at(x, y + half); cnt++; }
+        set(x, y, sum / cnt + rnd() * scale);
+      }
+    }
+    step = half;
+  }
+
+  let mn = Infinity, mx = -Infinity;
+  for (let i = 0; i < arr.length; i++) { if (arr[i] < mn) mn = arr[i]; if (arr[i] > mx) mx = arr[i]; }
+  const norm = new Float32Array(N * N);
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++)
+    norm[y * N + x] = (at(x, y) - mn) / (mx - mn);
+  return norm;
+}
+
+function classify(surf, p) {
+  const vals = Array.from(surf).sort((a, b) => a - b);
+  const thresh = vals[Math.floor((1 - p) * vals.length)];
+  const bin = new Uint8Array(N * N);
+  for (let i = 0; i < surf.length; i++) bin[i] = surf[i] >= thresh ? 1 : 0;
+  return bin;
+}
+
+function floodfill(map, x, y, id, labels) {
+  const stack = [[x, y]];
+  while (stack.length) {
+    const [cx, cy] = stack.pop();
+    const idx = cy * N + cx;
+    if (cx < 0 || cx >= N || cy < 0 || cy >= N) continue;
+    if (map[idx] !== 1 || labels[idx] !== 0) continue;
+    labels[idx] = id;
+    stack.push([cx+1,cy],[cx-1,cy],[cx,cy+1],[cx,cy-1]);
+  }
+}
+
+function analyzeMap(bin) {
+  const labels = new Int32Array(N * N);
+  let nextId = 1;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++)
+    if (bin[y * N + x] === 1 && labels[y * N + x] === 0) { floodfill(bin, x, y, nextId++, labels); }
+  const counts = {};
+  for (let i = 0; i < labels.length; i++) if (labels[i] > 0) counts[labels[i]] = (counts[labels[i]] || 0) + 1;
+  const patches = Object.keys(counts).length;
+  const total = bin.reduce((s, v) => s + v, 0);
+  const largest = patches ? Math.max(...Object.values(counts)) : 0;
+  const lp = total > 0 ? largest / total : 0;
+
+  // check percolation (does habitat touch both top and bottom?)
+  const topIds = new Set(), botIds = new Set();
+  for (let x = 0; x < N; x++) { if (labels[x] > 0) topIds.add(labels[x]); if (labels[(N-1)*N+x] > 0) botIds.add(labels[(N-1)*N+x]); }
+  let percolates = false;
+  for (const id of topIds) if (botIds.has(id)) { percolates = true; break; }
+
+  // contagion proxy: proportion of like adjacencies
+  let likeAdj = 0, totalAdj = 0;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    if (x + 1 < N) { totalAdj++; if (bin[y*N+x] === bin[y*N+x+1]) likeAdj++; }
+    if (y + 1 < N) { totalAdj++; if (bin[y*N+x] === bin[(y+1)*N+x]) likeAdj++; }
+  }
+  const contag = totalAdj > 0 ? likeAdj / totalAdj : 0;
+  return { patches, lp, contag, percolates };
+}
+
+function isDark() {
+  const m = document.documentElement.dataset.mode;
+  return m ? m === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function drawMap(canvas, bin, cellSize) {
+  const ctx = canvas.getContext('2d');
+  const dark = isDark();
+  const hab = dark ? '#1D9E75' : '#1D9E75';
+  const noHab = dark ? '#2C2C2A' : '#F1EFE8';
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    ctx.fillStyle = bin[y * N + x] ? hab : noHab;
+    ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+  }
+}
+
+let currentSurface = null;
+
+function renderMain() {
+  const H = parseFloat(document.getElementById('h-slider').value);
+  const p = parseFloat(document.getElementById('p-slider').value);
+  document.getElementById('h-val').textContent = H.toFixed(2);
+  document.getElementById('p-val').textContent = p.toFixed(2);
+
+  const rng = mulberry32(seed);
+  currentSurface = generateFractal(H, N, rng);
+  const bin = classify(currentSurface, p);
+
+  const canvas = document.getElementById('main-canvas');
+  drawMap(canvas, bin, Math.floor(220 / N));
+
+  const m = analyzeMap(bin);
+  document.getElementById('m-patches').textContent = m.patches;
+  document.getElementById('m-lp').textContent = (m.lp * 100).toFixed(1) + '%';
+  document.getElementById('m-contag').textContent = (m.contag * 100).toFixed(1) + '%';
+  document.getElementById('m-perc').textContent = m.percolates ? 'Yes ✓' : 'No';
+
+  let msg = '';
+  if (H < 0.25) msg = `Low H (${H.toFixed(2)}): each cell is nearly independent of its neighbors — the map looks grainy and fragmented, resembling random noise.`;
+  else if (H < 0.55) msg = `Moderate H (${H.toFixed(2)}): a balance of randomness and clustering. Patches form but remain irregular, similar to many natural disturbance-structured landscapes.`;
+  else msg = `High H (${H.toFixed(2)}): strong spatial autocorrelation — nearby cells are similar. Large contiguous patches emerge, resembling topographically structured landscapes.`;
+  if (p < 0.3) msg += ` With only ${(p*100).toFixed(0)}% habitat, patches are isolated regardless of H.`;
+  else if (p > 0.7) msg += ` With ${(p*100).toFixed(0)}% habitat, the landscape is nearly saturated.`;
+  if (m.percolates) msg += ` Habitat percolates (connects edge to edge).`;
+  document.getElementById('interpretation').textContent = msg;
+
+  renderComparisons(p, H);
+}
+
+function renderComparisons(p, H) {
+  const hVals = [0.1, 0.5, 0.9];
+  const pVals = [0.25, 0.5, 0.75];
+
+  const makeSmallCanvas = (bin, label) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'map-wrap';
+    const c = document.createElement('canvas');
+    c.width = 128; c.height = 128;
+    const t = document.createElement('div');
+    t.className = 'map-title';
+    t.innerHTML = label;
+    drawMap(c, bin, Math.floor(128 / N));
+    wrap.appendChild(c);
+    wrap.appendChild(t);
+    return wrap;
+  };
+
+  const hRow = document.getElementById('h-compare-row');
+  hRow.innerHTML = '';
+  for (const hv of hVals) {
+    const rng = mulberry32(seed + 1);
+    const surf = generateFractal(hv, N, rng);
+    const bin = classify(surf, p);
+    const m = analyzeMap(bin);
+    hRow.appendChild(makeSmallCanvas(bin, `<strong>H = ${hv.toFixed(1)}</strong> · p = ${p.toFixed(2)} · ${m.patches} patches`));
+  }
+
+  const pRow = document.getElementById('p-compare-row');
+  pRow.innerHTML = '';
+  for (const pv of pVals) {
+    const rng = mulberry32(seed + 2);
+    const surf = generateFractal(H, N, rng);
+    const bin = classify(surf, pv);
+    const m = analyzeMap(bin);
+    pRow.appendChild(makeSmallCanvas(bin, `H = ${H.toFixed(2)} · <strong>p = ${pv.toFixed(2)}</strong> · ${m.patches} patches`));
+  }
+}
+
+function regenerate() { seed = Math.random() * 1e9 | 0; renderMain(); }
+
+document.getElementById('h-slider').addEventListener('input', renderMain);
+document.getElementById('p-slider').addEventListener('input', renderMain);
+
+renderMain();
+</script>

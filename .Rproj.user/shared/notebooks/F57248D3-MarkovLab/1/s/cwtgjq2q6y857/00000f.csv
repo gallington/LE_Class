@@ -1,0 +1,1 @@
+"0","plot(out2[,1],out2[,2],type=""l"",col=1, lwd=2, xlim=c(1970,2975),ylim=c(0,0.5),xlab=""Year"",ylab=""Proportion"")"

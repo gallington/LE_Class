@@ -1,0 +1,1401 @@
+Pos,Site,VegHt
+1,TP,110
+1,MF,7
+1,Pasture A,40
+1,Pasture B,30
+1,Pasture C,40
+1,Pasture D,30
+1,Pasture E,60
+2,TP,145
+2,MF,8
+2,Pasture A,40
+2,Pasture B,40
+2,Pasture C,40
+2,Pasture D,40
+2,Pasture E,80
+3,TP,97
+3,MF,8
+3,Pasture A,30
+3,Pasture B,40
+3,Pasture C,40
+3,Pasture D,30
+3,Pasture E,30
+4,TP,117
+4,MF,9
+4,Pasture A,700
+4,Pasture B,30
+4,Pasture C,40
+4,Pasture D,40
+4,Pasture E,40
+5,TP,125
+5,MF,9
+5,Pasture A,700
+5,Pasture B,30
+5,Pasture C,40
+5,Pasture D,40
+5,Pasture E,30
+6,TP,116
+6,MF,9
+6,Pasture A,700
+6,Pasture B,30
+6,Pasture C,60
+6,Pasture D,40
+6,Pasture E,110
+7,TP,95
+7,MF,7
+7,Pasture A,700
+7,Pasture B,30
+7,Pasture C,50
+7,Pasture D,60
+7,Pasture E,110
+8,TP,96
+8,MF,7
+8,Pasture A,700
+8,Pasture B,50
+8,Pasture C,50
+8,Pasture D,40
+8,Pasture E,70
+9,TP,90
+9,MF,6
+9,Pasture A,300
+9,Pasture B,20
+9,Pasture C,65
+9,Pasture D,50
+9,Pasture E,70
+10,TP,82
+10,MF,7
+10,Pasture A,40
+10,Pasture B,50
+10,Pasture C,50
+10,Pasture D,40
+10,Pasture E,100
+11,TP,110
+11,MF,9
+11,Pasture A,50
+11,Pasture B,20
+11,Pasture C,50
+11,Pasture D,60
+11,Pasture E,90
+12,TP,97
+12,MF,8
+12,Pasture A,40
+12,Pasture B,20
+12,Pasture C,50
+12,Pasture D,40
+12,Pasture E,100
+13,TP,105
+13,MF,6
+13,Pasture A,40
+13,Pasture B,30
+13,Pasture C,40
+13,Pasture D,30
+13,Pasture E,110
+14,TP,75
+14,MF,5
+14,Pasture A,40
+14,Pasture B,20
+14,Pasture C,45
+14,Pasture D,50
+14,Pasture E,100
+15,TP,70
+15,MF,5
+15,Pasture A,700
+15,Pasture B,20
+15,Pasture C,40
+15,Pasture D,50
+15,Pasture E,130
+16,TP,86
+16,MF,6
+16,Pasture A,700
+16,Pasture B,20
+16,Pasture C,40
+16,Pasture D,40
+16,Pasture E,60
+17,TP,65
+17,MF,7
+17,Pasture A,700
+17,Pasture B,30
+17,Pasture C,45
+17,Pasture D,30
+17,Pasture E,80
+18,TP,65
+18,MF,7
+18,Pasture A,50
+18,Pasture B,40
+18,Pasture C,70
+18,Pasture D,50
+18,Pasture E,140
+19,TP,60
+19,MF,6
+19,Pasture A,50
+19,Pasture B,30
+19,Pasture C,65
+19,Pasture D,30
+19,Pasture E,100
+20,TP,70
+20,MF,6
+20,Pasture A,40
+20,Pasture B,30
+20,Pasture C,40
+20,Pasture D,800
+20,Pasture E,90
+21,TP,81
+21,MF,7
+21,Pasture A,700
+21,Pasture B,40
+21,Pasture C,40
+21,Pasture D,800
+21,Pasture E,70
+22,TP,40
+22,MF,8
+22,Pasture A,700
+22,Pasture B,30
+22,Pasture C,40
+22,Pasture D,800
+22,Pasture E,100
+23,TP,42
+23,MF,11
+23,Pasture A,700
+23,Pasture B,30
+23,Pasture C,60
+23,Pasture D,800
+23,Pasture E,80
+24,TP,42
+24,MF,7
+24,Pasture A,700
+24,Pasture B,30
+24,Pasture C,65
+24,Pasture D,30
+24,Pasture E,100
+25,TP,70
+25,MF,13
+25,Pasture A,700
+25,Pasture B,200
+25,Pasture C,40
+25,Pasture D,30
+25,Pasture E,90
+26,TP,55
+26,MF,11
+26,Pasture A,700
+26,Pasture B,300
+26,Pasture C,65
+26,Pasture D,40
+26,Pasture E,80
+27,TP,52
+27,MF,7
+27,Pasture A,80
+27,Pasture B,500
+27,Pasture C,70
+27,Pasture D,600
+27,Pasture E,70
+28,TP,80
+28,MF,9
+28,Pasture A,40
+28,Pasture B,40
+28,Pasture C,50
+28,Pasture D,600
+28,Pasture E,90
+29,TP,57
+29,MF,11
+29,Pasture A,40
+29,Pasture B,10
+29,Pasture C,60
+29,Pasture D,600
+29,Pasture E,70
+30,TP,52
+30,MF,16
+30,Pasture A,40
+30,Pasture B,10
+30,Pasture C,70
+30,Pasture D,600
+30,Pasture E,70
+31,TP,46
+31,MF,10
+31,Pasture A,40
+31,Pasture B,30
+31,Pasture C,40
+31,Pasture D,40
+31,Pasture E,60
+32,TP,45
+32,MF,7
+32,Pasture A,40
+32,Pasture B,30
+32,Pasture C,45
+32,Pasture D,40
+32,Pasture E,40
+33,TP,40
+33,MF,6
+33,Pasture A,40
+33,Pasture B,30
+33,Pasture C,50
+33,Pasture D,40
+33,Pasture E,40
+34,TP,40
+34,MF,6
+34,Pasture A,40
+34,Pasture B,30
+34,Pasture C,50
+34,Pasture D,30
+34,Pasture E,50
+35,TP,60
+35,MF,8
+35,Pasture A,50
+35,Pasture B,30
+35,Pasture C,50
+35,Pasture D,40
+35,Pasture E,50
+36,TP,65
+36,MF,10
+36,Pasture A,40
+36,Pasture B,30
+36,Pasture C,80
+36,Pasture D,40
+36,Pasture E,50
+37,TP,55
+37,MF,11
+37,Pasture A,40
+37,Pasture B,30
+37,Pasture C,60
+37,Pasture D,40
+37,Pasture E,70
+38,TP,74
+38,MF,10
+38,Pasture A,50
+38,Pasture B,20
+38,Pasture C,45
+38,Pasture D,40
+38,Pasture E,90
+39,TP,70
+39,MF,9
+39,Pasture A,30
+39,Pasture B,500
+39,Pasture C,50
+39,Pasture D,800
+39,Pasture E,120
+40,TP,65
+40,MF,11
+40,Pasture A,30
+40,Pasture B,1000
+40,Pasture C,60
+40,Pasture D,800
+40,Pasture E,140
+41,TP,40
+41,MF,7
+41,Pasture A,30
+41,Pasture B,1000
+41,Pasture C,60
+41,Pasture D,800
+41,Pasture E,80
+42,TP,45
+42,MF,9
+42,Pasture A,25
+42,Pasture B,1000
+42,Pasture C,60
+42,Pasture D,40
+42,Pasture E,70
+43,TP,67
+43,MF,10
+43,Pasture A,40
+43,Pasture B,1000
+43,Pasture C,50
+43,Pasture D,30
+43,Pasture E,70
+44,TP,67
+44,MF,11
+44,Pasture A,800
+44,Pasture B,1000
+44,Pasture C,40
+44,Pasture D,30
+44,Pasture E,100
+45,TP,74
+45,MF,9
+45,Pasture A,800
+45,Pasture B,1000
+45,Pasture C,40
+45,Pasture D,30
+45,Pasture E,110
+46,TP,67
+46,MF,9
+46,Pasture A,800
+46,Pasture B,1000
+46,Pasture C,50
+46,Pasture D,40
+46,Pasture E,100
+47,TP,50
+47,MF,9
+47,Pasture A,800
+47,Pasture B,1000
+47,Pasture C,50
+47,Pasture D,50
+47,Pasture E,60
+48,TP,61
+48,MF,6
+48,Pasture A,800
+48,Pasture B,1000
+48,Pasture C,40
+48,Pasture D,40
+48,Pasture E,60
+49,TP,60
+49,MF,15
+49,Pasture A,800
+49,Pasture B,1000
+49,Pasture C,50
+49,Pasture D,40
+49,Pasture E,60
+50,TP,70
+50,MF,8
+50,Pasture A,800
+50,Pasture B,1000
+50,Pasture C,70
+50,Pasture D,35
+50,Pasture E,50
+51,TP,86
+51,MF,8
+51,Pasture A,800
+51,Pasture B,1000
+51,Pasture C,50
+51,Pasture D,40
+51,Pasture E,60
+52,TP,67
+52,MF,10
+52,Pasture A,600
+52,Pasture B,1000
+52,Pasture C,50
+52,Pasture D,50
+52,Pasture E,30
+53,TP,68
+53,MF,12
+53,Pasture A,30
+53,Pasture B,1000
+53,Pasture C,40
+53,Pasture D,30
+53,Pasture E,50
+54,TP,72
+54,MF,14
+54,Pasture A,30
+54,Pasture B,1000
+54,Pasture C,65
+54,Pasture D,40
+54,Pasture E,70
+55,TP,78
+55,MF,11
+55,Pasture A,30
+55,Pasture B,1000
+55,Pasture C,60
+55,Pasture D,40
+55,Pasture E,50
+56,TP,63
+56,MF,7
+56,Pasture A,30
+56,Pasture B,1000
+56,Pasture C,30
+56,Pasture D,50
+56,Pasture E,70
+57,TP,62
+57,MF,6
+57,Pasture A,30
+57,Pasture B,1000
+57,Pasture C,50
+57,Pasture D,40
+57,Pasture E,60
+58,TP,80
+58,MF,6
+58,Pasture A,40
+58,Pasture B,1000
+58,Pasture C,60
+58,Pasture D,60
+58,Pasture E,80
+59,TP,83
+59,MF,7
+59,Pasture A,50
+59,Pasture B,1000
+59,Pasture C,50
+59,Pasture D,600
+59,Pasture E,40
+60,TP,62
+60,MF,27
+60,Pasture A,40
+60,Pasture B,1000
+60,Pasture C,40
+60,Pasture D,600
+60,Pasture E,70
+61,TP,47
+61,MF,13
+61,Pasture A,30
+61,Pasture B,1000
+61,Pasture C,40
+61,Pasture D,600
+61,Pasture E,90
+62,TP,64
+62,MF,15
+62,Pasture A,30
+62,Pasture B,1000
+62,Pasture C,45
+62,Pasture D,600
+62,Pasture E,60
+63,TP,72
+63,MF,7
+63,Pasture A,30
+63,Pasture B,1000
+63,Pasture C,20
+63,Pasture D,600
+63,Pasture E,80
+64,TP,56
+64,MF,12
+64,Pasture A,40
+64,Pasture B,30
+64,Pasture C,40
+64,Pasture D,600
+64,Pasture E,50
+65,TP,95
+65,MF,6
+65,Pasture A,800
+65,Pasture B,20
+65,Pasture C,90
+65,Pasture D,600
+65,Pasture E,60
+66,TP,80
+66,MF,8
+66,Pasture A,800
+66,Pasture B,20
+66,Pasture C,40
+66,Pasture D,600
+66,Pasture E,50
+67,TP,73
+67,MF,8
+67,Pasture A,800
+67,Pasture B,30
+67,Pasture C,40
+67,Pasture D,600
+67,Pasture E,60
+68,TP,47
+68,MF,7
+68,Pasture A,800
+68,Pasture B,30
+68,Pasture C,80
+68,Pasture D,30
+68,Pasture E,60
+69,TP,77
+69,MF,7
+69,Pasture A,30
+69,Pasture B,30
+69,Pasture C,50
+69,Pasture D,60
+69,Pasture E,30
+70,TP,80
+70,MF,7
+70,Pasture A,30
+70,Pasture B,30
+70,Pasture C,70
+70,Pasture D,40
+70,Pasture E,30
+71,TP,47
+71,MF,9
+71,Pasture A,30
+71,Pasture B,50
+71,Pasture C,50
+71,Pasture D,40
+71,Pasture E,60
+72,TP,70
+72,MF,12
+72,Pasture A,800
+72,Pasture B,50
+72,Pasture C,60
+72,Pasture D,30
+72,Pasture E,60
+73,TP,58
+73,MF,11
+73,Pasture A,1000
+73,Pasture B,30
+73,Pasture C,50
+73,Pasture D,70
+73,Pasture E,40
+74,TP,50
+74,MF,7
+74,Pasture A,1000
+74,Pasture B,40
+74,Pasture C,55
+74,Pasture D,700
+74,Pasture E,110
+75,TP,62
+75,MF,8
+75,Pasture A,1000
+75,Pasture B,30
+75,Pasture C,60
+75,Pasture D,700
+75,Pasture E,90
+76,TP,54
+76,MF,8
+76,Pasture A,1000
+76,Pasture B,40
+76,Pasture C,40
+76,Pasture D,70
+76,Pasture E,130
+77,TP,65
+77,MF,6
+77,Pasture A,1000
+77,Pasture B,40
+77,Pasture C,40
+77,Pasture D,20
+77,Pasture E,120
+78,TP,40
+78,MF,7
+78,Pasture A,1000
+78,Pasture B,40
+78,Pasture C,45
+78,Pasture D,800
+78,Pasture E,50
+79,TP,46
+79,MF,7
+79,Pasture A,1000
+79,Pasture B,30
+79,Pasture C,70
+79,Pasture D,800
+79,Pasture E,50
+80,TP,57
+80,MF,8
+80,Pasture A,1000
+80,Pasture B,30
+80,Pasture C,60
+80,Pasture D,800
+80,Pasture E,50
+81,TP,30
+81,MF,6
+81,Pasture A,30
+81,Pasture B,40
+81,Pasture C,70
+81,Pasture D,800
+81,Pasture E,30
+82,TP,60
+82,MF,8
+82,Pasture A,30
+82,Pasture B,30
+82,Pasture C,65
+82,Pasture D,50
+82,Pasture E,40
+83,TP,62
+83,MF,6
+83,Pasture A,30
+83,Pasture B,30
+83,Pasture C,60
+83,Pasture D,200
+83,Pasture E,30
+84,TP,75
+84,MF,6
+84,Pasture A,30
+84,Pasture B,700
+84,Pasture C,60
+84,Pasture D,200
+84,Pasture E,60
+85,TP,80
+85,MF,5
+85,Pasture A,30
+85,Pasture B,700
+85,Pasture C,45
+85,Pasture D,200
+85,Pasture E,70
+86,TP,90
+86,MF,6
+86,Pasture A,30
+86,Pasture B,700
+86,Pasture C,50
+86,Pasture D,60
+86,Pasture E,70
+87,TP,80
+87,MF,6
+87,Pasture A,30
+87,Pasture B,1000
+87,Pasture C,60
+87,Pasture D,60
+87,Pasture E,70
+88,TP,50
+88,MF,5
+88,Pasture A,30
+88,Pasture B,1000
+88,Pasture C,60
+88,Pasture D,40
+88,Pasture E,40
+89,TP,60
+89,MF,8
+89,Pasture A,30
+89,Pasture B,1000
+89,Pasture C,60
+89,Pasture D,40
+89,Pasture E,50
+90,TP,63
+90,MF,9
+90,Pasture A,500
+90,Pasture B,1000
+90,Pasture C,55
+90,Pasture D,60
+90,Pasture E,30
+91,TP,45
+91,MF,6
+91,Pasture A,500
+91,Pasture B,20
+91,Pasture C,55
+91,Pasture D,40
+91,Pasture E,60
+92,TP,63
+92,MF,5
+92,Pasture A,30
+92,Pasture B,20
+92,Pasture C,50
+92,Pasture D,30
+92,Pasture E,90
+93,TP,43
+93,MF,5
+93,Pasture A,30
+93,Pasture B,20
+93,Pasture C,50
+93,Pasture D,60
+93,Pasture E,80
+94,TP,46
+94,MF,6
+94,Pasture A,30
+94,Pasture B,20
+94,Pasture C,45
+94,Pasture D,200
+94,Pasture E,50
+95,TP,44
+95,MF,8
+95,Pasture A,40
+95,Pasture B,20
+95,Pasture C,60
+95,Pasture D,60
+95,Pasture E,50
+96,TP,57
+96,MF,11
+96,Pasture A,40
+96,Pasture B,30
+96,Pasture C,40
+96,Pasture D,60
+96,Pasture E,40
+97,TP,55
+97,MF,5
+97,Pasture A,40
+97,Pasture B,30
+97,Pasture C,60
+97,Pasture D,40
+97,Pasture E,20
+98,TP,52
+98,MF,8
+98,Pasture A,40
+98,Pasture B,30
+98,Pasture C,50
+98,Pasture D,60
+98,Pasture E,80
+99,TP,48
+99,MF,5
+99,Pasture A,40
+99,Pasture B,30
+99,Pasture C,60
+99,Pasture D,20
+99,Pasture E,50
+100,TP,50
+100,MF,6
+100,Pasture A,40
+100,Pasture B,50
+100,Pasture C,45
+100,Pasture D,40
+100,Pasture E,40
+101,TP,57
+101,MF,5
+101,Pasture A,40
+101,Pasture B,30
+101,Pasture C,45
+101,Pasture D,600
+101,Pasture E,60
+102,TP,50
+102,MF,8
+102,Pasture A,40
+102,Pasture B,30
+102,Pasture C,50
+102,Pasture D,600
+102,Pasture E,40
+103,TP,63
+103,MF,5
+103,Pasture A,40
+103,Pasture B,40
+103,Pasture C,55
+103,Pasture D,30
+103,Pasture E,40
+104,TP,50
+104,MF,4
+104,Pasture A,40
+104,Pasture B,50
+104,Pasture C,50
+104,Pasture D,30
+104,Pasture E,40
+105,TP,40
+105,MF,7
+105,Pasture A,40
+105,Pasture B,50
+105,Pasture C,50
+105,Pasture D,1000
+105,Pasture E,30
+106,TP,52
+106,MF,5
+106,Pasture A,30
+106,Pasture B,30
+106,Pasture C,60
+106,Pasture D,1000
+106,Pasture E,40
+107,TP,63
+107,MF,6
+107,Pasture A,40
+107,Pasture B,700
+107,Pasture C,60
+107,Pasture D,1000
+107,Pasture E,30
+108,TP,50
+108,MF,4
+108,Pasture A,40
+108,Pasture B,1000
+108,Pasture C,55
+108,Pasture D,1000
+108,Pasture E,30
+109,TP,55
+109,MF,4
+109,Pasture A,30
+109,Pasture B,1000
+109,Pasture C,80
+109,Pasture D,1000
+109,Pasture E,90
+110,TP,55
+110,MF,5
+110,Pasture A,300
+110,Pasture B,1000
+110,Pasture C,50
+110,Pasture D,1000
+110,Pasture E,30
+111,TP,80
+111,MF,6
+111,Pasture A,500
+111,Pasture B,1000
+111,Pasture C,50
+111,Pasture D,1000
+111,Pasture E,40
+112,TP,81
+112,MF,6
+112,Pasture A,500
+112,Pasture B,1000
+112,Pasture C,55
+112,Pasture D,1200
+112,Pasture E,40
+113,TP,45
+113,MF,5
+113,Pasture A,500
+113,Pasture B,1000
+113,Pasture C,70
+113,Pasture D,1200
+113,Pasture E,30
+114,TP,38
+114,MF,5
+114,Pasture A,500
+114,Pasture B,1000
+114,Pasture C,60
+114,Pasture D,1200
+114,Pasture E,50
+115,TP,46
+115,MF,5
+115,Pasture A,30
+115,Pasture B,1000
+115,Pasture C,55
+115,Pasture D,800
+115,Pasture E,100
+116,TP,65
+116,MF,11
+116,Pasture A,30
+116,Pasture B,20
+116,Pasture C,55
+116,Pasture D,800
+116,Pasture E,100
+117,TP,47
+117,MF,8
+117,Pasture A,30
+117,Pasture B,30
+117,Pasture C,50
+117,Pasture D,60
+117,Pasture E,80
+118,TP,98
+118,MF,14
+118,Pasture A,30
+118,Pasture B,30
+118,Pasture C,70
+118,Pasture D,60
+118,Pasture E,60
+119,TP,107
+119,MF,16
+119,Pasture A,30
+119,Pasture B,40
+119,Pasture C,60
+119,Pasture D,30
+119,Pasture E,800
+120,TP,100
+120,MF,13
+120,Pasture A,30
+120,Pasture B,50
+120,Pasture C,80
+120,Pasture D,30
+120,Pasture E,800
+121,TP,131
+121,MF,21
+121,Pasture A,30
+121,Pasture B,40
+121,Pasture C,40
+121,Pasture D,600
+121,Pasture E,1000
+122,TP,120
+122,MF,22
+122,Pasture A,40
+122,Pasture B,50
+122,Pasture C,45
+122,Pasture D,800
+122,Pasture E,1000
+123,TP,105
+123,MF,7
+123,Pasture A,40
+123,Pasture B,40
+123,Pasture C,60
+123,Pasture D,1500
+123,Pasture E,1000
+124,TP,107
+124,MF,5
+124,Pasture A,30
+124,Pasture B,50
+124,Pasture C,40
+124,Pasture D,1500
+124,Pasture E,1000
+125,TP,90
+125,MF,6
+125,Pasture A,500
+125,Pasture B,50
+125,Pasture C,50
+125,Pasture D,1500
+125,Pasture E,1000
+126,TP,131
+126,MF,27
+126,Pasture A,1000
+126,Pasture B,10
+126,Pasture C,50
+126,Pasture D,1500
+126,Pasture E,1000
+127,TP,97
+127,MF,5
+127,Pasture A,1000
+127,Pasture B,10
+127,Pasture C,85
+127,Pasture D,1500
+127,Pasture E,700
+128,TP,94
+128,MF,5
+128,Pasture A,1000
+128,Pasture B,20
+128,Pasture C,60
+128,Pasture D,1500
+128,Pasture E,700
+129,TP,80
+129,MF,6
+129,Pasture A,1000
+129,Pasture B,20
+129,Pasture C,40
+129,Pasture D,1500
+129,Pasture E,1000
+130,TP,80
+130,MF,7
+130,Pasture A,1000
+130,Pasture B,20
+130,Pasture C,200
+130,Pasture D,1500
+130,Pasture E,1000
+131,TP,103
+131,MF,5
+131,Pasture A,1000
+131,Pasture B,20
+131,Pasture C,200
+131,Pasture D,1500
+131,Pasture E,1000
+132,TP,70
+132,MF,5
+132,Pasture A,1000
+132,Pasture B,30
+132,Pasture C,200
+132,Pasture D,1500
+132,Pasture E,1000
+133,TP,76
+133,MF,5
+133,Pasture A,1000
+133,Pasture B,20
+133,Pasture C,65
+133,Pasture D,1500
+133,Pasture E,1000
+134,TP,90
+134,MF,4
+134,Pasture A,30
+134,Pasture B,20
+134,Pasture C,30
+134,Pasture D,1500
+134,Pasture E,1000
+135,TP,135
+135,MF,5
+135,Pasture A,40
+135,Pasture B,40
+135,Pasture C,60
+135,Pasture D,1500
+135,Pasture E,1000
+136,TP,98
+136,MF,4
+136,Pasture A,40
+136,Pasture B,50
+136,Pasture C,120
+136,Pasture D,1500
+136,Pasture E,1000
+137,TP,113
+137,MF,4
+137,Pasture A,90
+137,Pasture B,30
+137,Pasture C,60
+137,Pasture D,1500
+137,Pasture E,700
+138,TP,102
+138,MF,5
+138,Pasture A,1000
+138,Pasture B,60
+138,Pasture C,130
+138,Pasture D,1500
+138,Pasture E,700
+139,TP,97
+139,MF,6
+139,Pasture A,1000
+139,Pasture B,30
+139,Pasture C,70
+139,Pasture D,1500
+139,Pasture E,500
+140,TP,81
+140,MF,5
+140,Pasture A,1000
+140,Pasture B,30
+140,Pasture C,130
+140,Pasture D,1500
+140,Pasture E,500
+141,TP,130
+141,MF,6
+141,Pasture A,1000
+141,Pasture B,20
+141,Pasture C,120
+141,Pasture D,1500
+141,Pasture E,1200
+142,TP,92
+142,MF,5
+142,Pasture A,40
+142,Pasture B,20
+142,Pasture C,120
+142,Pasture D,1500
+142,Pasture E,1200
+143,TP,81
+143,MF,6
+143,Pasture A,40
+143,Pasture B,20
+143,Pasture C,120
+143,Pasture D,1500
+143,Pasture E,1200
+144,TP,101
+144,MF,5
+144,Pasture A,40
+144,Pasture B,30
+144,Pasture C,80
+144,Pasture D,1500
+144,Pasture E,1200
+145,TP,91
+145,MF,5
+145,Pasture A,40
+145,Pasture B,20
+145,Pasture C,60
+145,Pasture D,1500
+145,Pasture E,1200
+146,TP,88
+146,MF,6
+146,Pasture A,30
+146,Pasture B,30
+146,Pasture C,40
+146,Pasture D,1500
+146,Pasture E,1200
+147,TP,60
+147,MF,4
+147,Pasture A,40
+147,Pasture B,30
+147,Pasture C,30
+147,Pasture D,1500
+147,Pasture E,1200
+148,TP,90
+148,MF,4
+148,Pasture A,40
+148,Pasture B,35
+148,Pasture C,70
+148,Pasture D,1500
+148,Pasture E,1200
+149,TP,83
+149,MF,4
+149,Pasture A,40
+149,Pasture B,40
+149,Pasture C,60
+149,Pasture D,1500
+149,Pasture E,1200
+150,TP,92
+150,MF,5
+150,Pasture A,50
+150,Pasture B,20
+150,Pasture C,40
+150,Pasture D,1500
+150,Pasture E,1200
+151,TP,92
+151,MF,5
+151,Pasture A,40
+151,Pasture B,30
+151,Pasture C,40
+151,Pasture D,1500
+151,Pasture E,1200
+152,TP,84
+152,MF,9
+152,Pasture A,30
+152,Pasture B,30
+152,Pasture C,50
+152,Pasture D,1500
+152,Pasture E,1200
+153,TP,101
+153,MF,4
+153,Pasture A,40
+153,Pasture B,30
+153,Pasture C,40
+153,Pasture D,1500
+153,Pasture E,1200
+154,TP,90
+154,MF,5
+154,Pasture A,30
+154,Pasture B,30
+154,Pasture C,50
+154,Pasture D,1500
+154,Pasture E,1200
+155,TP,76
+155,MF,6
+155,Pasture A,40
+155,Pasture B,50
+155,Pasture C,65
+155,Pasture D,1500
+155,Pasture E,1200
+156,TP,94
+156,MF,6
+156,Pasture A,40
+156,Pasture B,30
+156,Pasture C,40
+156,Pasture D,1500
+156,Pasture E,1200
+157,TP,79
+157,MF,6
+157,Pasture A,40
+157,Pasture B,20
+157,Pasture C,40
+157,Pasture D,1500
+157,Pasture E,1200
+158,TP,96
+158,MF,5
+158,Pasture A,40
+158,Pasture B,30
+158,Pasture C,45
+158,Pasture D,1500
+158,Pasture E,1200
+159,TP,147
+159,MF,5
+159,Pasture A,40
+159,Pasture B,30
+159,Pasture C,40
+159,Pasture D,1500
+159,Pasture E,1200
+160,TP,88
+160,MF,4
+160,Pasture A,65
+160,Pasture B,30
+160,Pasture C,40
+160,Pasture D,1500
+160,Pasture E,1200
+161,TP,95
+161,MF,5
+161,Pasture A,40
+161,Pasture B,20
+161,Pasture C,50
+161,Pasture D,1500
+161,Pasture E,1200
+162,TP,120
+162,MF,7
+162,Pasture A,40
+162,Pasture B,20
+162,Pasture C,50
+162,Pasture D,1500
+162,Pasture E,1200
+163,TP,91
+163,MF,5
+163,Pasture A,40
+163,Pasture B,35
+163,Pasture C,40
+163,Pasture D,1500
+163,Pasture E,1200
+164,TP,91
+164,MF,4
+164,Pasture A,40
+164,Pasture B,30
+164,Pasture C,45
+164,Pasture D,1500
+164,Pasture E,1200
+165,TP,123
+165,MF,4
+165,Pasture A,600
+165,Pasture B,40
+165,Pasture C,50
+165,Pasture D,1500
+165,Pasture E,1200
+166,TP,127
+166,MF,5
+166,Pasture A,600
+166,Pasture B,30
+166,Pasture C,55
+166,Pasture D,1500
+166,Pasture E,1200
+167,TP,118
+167,MF,5
+167,Pasture A,600
+167,Pasture B,30
+167,Pasture C,50
+167,Pasture D,60
+167,Pasture E,1200
+168,TP,76
+168,MF,6
+168,Pasture A,600
+168,Pasture B,30
+168,Pasture C,70
+168,Pasture D,60
+168,Pasture E,1200
+169,TP,110
+169,MF,5
+169,Pasture A,40
+169,Pasture B,30
+169,Pasture C,70
+169,Pasture D,1000
+169,Pasture E,1200
+170,TP,85
+170,MF,6
+170,Pasture A,30
+170,Pasture B,20
+170,Pasture C,60
+170,Pasture D,1000
+170,Pasture E,1200
+171,TP,125
+171,MF,5
+171,Pasture A,30
+171,Pasture B,30
+171,Pasture C,50
+171,Pasture D,1000
+171,Pasture E,1500
+172,TP,152
+172,MF,5
+172,Pasture A,40
+172,Pasture B,30
+172,Pasture C,70
+172,Pasture D,1000
+172,Pasture E,1500
+173,TP,90
+173,MF,9
+173,Pasture A,40
+173,Pasture B,40
+173,Pasture C,40
+173,Pasture D,1000
+173,Pasture E,1500
+174,TP,97
+174,MF,4
+174,Pasture A,40
+174,Pasture B,40
+174,Pasture C,40
+174,Pasture D,1000
+174,Pasture E,1500
+175,TP,110
+175,MF,5
+175,Pasture A,40
+175,Pasture B,30
+175,Pasture C,60
+175,Pasture D,1000
+175,Pasture E,1500
+176,TP,115
+176,MF,5
+176,Pasture A,50
+176,Pasture B,30
+176,Pasture C,50
+176,Pasture D,1000
+176,Pasture E,1500
+177,TP,117
+177,MF,4
+177,Pasture A,50
+177,Pasture B,40
+177,Pasture C,60
+177,Pasture D,1000
+177,Pasture E,1500
+178,TP,105
+178,MF,9
+178,Pasture A,40
+178,Pasture B,30
+178,Pasture C,60
+178,Pasture D,800
+178,Pasture E,1500
+179,TP,91
+179,MF,5
+179,Pasture A,40
+179,Pasture B,30
+179,Pasture C,70
+179,Pasture D,800
+179,Pasture E,1500
+180,TP,98
+180,MF,5
+180,Pasture A,40
+180,Pasture B,40
+180,Pasture C,50
+180,Pasture D,800
+180,Pasture E,1500
+181,TP,100
+181,MF,6
+181,Pasture A,50
+181,Pasture B,40
+181,Pasture C,65
+181,Pasture D,800
+181,Pasture E,1500
+182,TP,105
+182,MF,5
+182,Pasture A,50
+182,Pasture B,30
+182,Pasture C,70
+182,Pasture D,1200
+182,Pasture E,1500
+183,TP,84
+183,MF,6
+183,Pasture A,50
+183,Pasture B,30
+183,Pasture C,70
+183,Pasture D,1200
+183,Pasture E,1500
+184,TP,97
+184,MF,5
+184,Pasture A,40
+184,Pasture B,40
+184,Pasture C,70
+184,Pasture D,1200
+184,Pasture E,1500
+185,TP,92
+185,MF,5
+185,Pasture A,40
+185,Pasture B,30
+185,Pasture C,70
+185,Pasture D,1200
+185,Pasture E,1500
+186,TP,91
+186,MF,6
+186,Pasture A,50
+186,Pasture B,30
+186,Pasture C,80
+186,Pasture D,1200
+186,Pasture E,1500
+187,TP,105
+187,MF,5
+187,Pasture A,50
+187,Pasture B,30
+187,Pasture C,85
+187,Pasture D,1200
+187,Pasture E,1500
+188,TP,72
+188,MF,6
+188,Pasture A,40
+188,Pasture B,40
+188,Pasture C,75
+188,Pasture D,1200
+188,Pasture E,1500
+189,TP,103
+189,MF,5
+189,Pasture A,40
+189,Pasture B,40
+189,Pasture C,70
+189,Pasture D,1200
+189,Pasture E,1500
+190,TP,87
+190,MF,6
+190,Pasture A,40
+190,Pasture B,40
+190,Pasture C,70
+190,Pasture D,1200
+190,Pasture E,1500
+191,TP,89
+191,MF,8
+191,Pasture A,40
+191,Pasture B,30
+191,Pasture C,70
+191,Pasture D,1200
+191,Pasture E,1500
+192,TP,103
+192,MF,13
+192,Pasture A,40
+192,Pasture B,30
+192,Pasture C,90
+192,Pasture D,1200
+192,Pasture E,1500
+193,TP,80
+193,MF,15
+193,Pasture A,50
+193,Pasture B,40
+193,Pasture C,50
+193,Pasture D,1200
+193,Pasture E,1500
+194,TP,70
+194,MF,15
+194,Pasture A,50
+194,Pasture B,40
+194,Pasture C,60
+194,Pasture D,1200
+194,Pasture E,1500
+195,TP,79
+195,MF,11
+195,Pasture A,40
+195,Pasture B,40
+195,Pasture C,50
+195,Pasture D,1500
+195,Pasture E,1500
+196,TP,96
+196,MF,12
+196,Pasture A,40
+196,Pasture B,50
+196,Pasture C,80
+196,Pasture D,1500
+196,Pasture E,1500
+197,TP,77
+197,MF,11
+197,Pasture A,30
+197,Pasture B,50
+197,Pasture C,50
+197,Pasture D,1500
+197,Pasture E,1500
+198,TP,67
+198,MF,12
+198,Pasture A,30
+198,Pasture B,50
+198,Pasture C,55
+198,Pasture D,1500
+198,Pasture E,1500
+199,TP,85
+199,MF,15
+199,Pasture A,200
+199,Pasture B,40
+199,Pasture C,60
+199,Pasture D,1500
+199,Pasture E,1500
+200,TP,72
+200,MF,14
+200,Pasture A,200
+200,Pasture B,30
+200,Pasture C,50
+200,Pasture D,1500
+200,Pasture E,1500

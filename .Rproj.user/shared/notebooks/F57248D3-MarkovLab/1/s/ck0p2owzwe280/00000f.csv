@@ -1,0 +1,2 @@
+"0","plot(pnw84, # but you can also do it this way"
+"0","      main = ""1984"" , col = rev(terrain.colors(6)))"

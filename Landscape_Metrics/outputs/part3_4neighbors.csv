@@ -1,0 +1,5 @@
+level,metric,EarlyPeriod,PostPeriod,NeighborRule
+landscape,np,33,51,4
+landscape,area_mn,303.03,196.078,4
+landscape,shei,0.849,0.993,4
+landscape,contag,15.781,1.621,4

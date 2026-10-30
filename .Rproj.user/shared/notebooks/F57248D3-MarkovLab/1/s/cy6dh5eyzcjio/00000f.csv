@@ -1,0 +1,7 @@
+"0","  # tally for 1984"
+"0","t1984 <- table(as.factor(pnw.data$X1984))"
+"0","  # proportions of each class in 1984"
+"0","p1984 <- t1984/sample.n"
+"0","  # etc."
+"0","t1991 <- table(as.factor(pnw.data$X1991))"
+"0","p1991 <- t1991/sample.n"

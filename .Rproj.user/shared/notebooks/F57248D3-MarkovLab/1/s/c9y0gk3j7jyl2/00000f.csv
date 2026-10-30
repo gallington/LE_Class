@@ -1,0 +1,6 @@
+"0","tmp <- inits # copy these to simplify the projections"
+"0",""
+"0","t[1] <- 1972   # set the start values -- start year &"
+"0","transient[1,] <- tmp    # start proportions"
+"0",""
+"0","t1 <- 1972   # start year"

@@ -1,0 +1,7 @@
+"0","  # tally for 1972"
+"0","t1972 <- table(as.factor(pnw.data$X1972)) "
+"0","  # proportions of each class in 1972"
+"0","p1972 <- t1972/sample.n   "
+"0","  # creates a vector of the initial proportion of each class"
+"0","  # this is the xi that you'll need to multiply by the transition matrix"
+"0","inits <- as.vector(p1972)"

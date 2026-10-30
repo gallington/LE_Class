@@ -1,0 +1,7 @@
+layer,level,class,id,metric,mad1,mad2,ne1,ne2,ne3
+1,landscape,NA,NA,contag,26.95,25.36,46.64,55.8,47.52
+1,landscape,NA,NA,pd,122.01,108.19,21.6,16.46,24.22
+1,landscape,NA,NA,ed,322.22,296.52,155.56,126.7,169.79
+1,landscape,NA,NA,lsi,164.85,151.79,26.2,21.53,28.51
+1,landscape,NA,NA,lpi,1.89,7.3,22.42,44.73,15.82
+1,landscape,NA,NA,pr,7,7,12,13,15

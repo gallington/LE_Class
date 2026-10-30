@@ -1,0 +1,7 @@
+"0","  # so load this script as well"
+"0","source(""fix_tm.R"")"
+"0","  # and then use this function, which generates probability of transition"
+"0","  # again you need to specify which transition matrix you want"
+"0","  # and also how many years"
+"0","  # use the one w relativized values."
+"0","P <- fix.steps(tr.72.84, 12)  "

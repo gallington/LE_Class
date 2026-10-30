@@ -1,0 +1,7 @@
+"0","  # set a variable that specifies how many land cover types."
+"0","ntypes <- length(inits) # 5 types, in this case"
+"0",""
+"0","# create some empty data frames for the output "
+"0","ntimes <- 999        "
+"0","t <- vector(length=ntimes)"
+"0","transient <- matrix(nrow=ntimes, ncol=ntypes)"
