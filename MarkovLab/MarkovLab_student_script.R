@@ -1,5 +1,5 @@
 # Title:  MarkovLab_student_script.R
-# Landscape Ecology – Lab 8
+# Landscape Ecology – Lab 6
 # Based on LLE Ch. 8: Projecting Landscape Change with Markov Models
 #
 # OVERVIEW:
